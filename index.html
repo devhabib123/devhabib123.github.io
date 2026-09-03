@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habib — ওয়েব ডেভেলপার</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #14201c;
+    --ink-soft: #3c4a45;
+    --cream: #f6f3ec;
+    --cream-deep: #efe9dc;
+    --line: #d8d1bf;
+    --gold: #a9782f;
+    --sage: #4b6358;
+    --sage-deep: #2f4038;
+    --wa: #2fae66;
+    --serif: 'Tiro Bangla', serif;
+    --sans: 'Hind Siliguri', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.7;
+    font-size:16px;
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--gold); color:var(--cream);}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:920px; margin:0 auto; padding-left:28px; padding-right:28px;}
+
+  /* ---------- Nav ---------- */
+  nav.top{
+    position:sticky; top:0; z-index:30;
+    background:rgba(246,243,236,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.top .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-size:19px;
+    font-weight:400;
+    letter-spacing:0.3px;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .tiktok-link{
+    color:var(--ink);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border:1px solid var(--line);
+    border-radius:50%;
+  }
+  .tiktok-link svg{width:16px; height:16px;}
+  .nav-cta{
+    font-family:var(--sans);
+    font-size:14px;
+    font-weight:600;
+    padding:9px 18px;
+    border:1px solid var(--ink);
+    border-radius:2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 0 88px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:13.5px;
+    color:var(--sage);
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(38px, 6.4vw, 60px);
+    line-height:1.28;
+    color:var(--ink);
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--sage-deep);
+    border-bottom:2px solid var(--gold);
+  }
+  .hero-sub{
+    margin-top:28px;
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:40px;
+    display:flex;
+    align-items:center;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .btn-solid{
+    background:var(--sage-deep);
+    color:var(--cream);
+    font-size:15px;
+    font-weight:600;
+    padding:15px 28px;
+    border-radius:2px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .btn-solid svg{width:18px; height:18px;}
+  .link-under{
+    font-size:15px;
+    font-weight:600;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+  }
+
+  /* ---------- Section framing ---------- */
+  section{padding:80px 0; border-bottom:1px solid var(--line);}
+  .sec-label{
+    font-size:13.5px;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:1px;
+    margin-bottom:14px;
+  }
+  .sec-heading{
+    font-family:var(--serif);
+    font-size:clamp(26px,4vw,34px);
+    font-weight:400;
+    max-width:20ch;
+    margin-bottom:36px;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .about-lead{
+    font-family:var(--serif);
+    font-size:22px;
+    line-height:1.6;
+    color:var(--sage-deep);
+    max-width:34ch;
+  }
+  .about-body p{
+    color:var(--ink-soft);
+    font-size:16px;
+    max-width:56ch;
+  }
+  .about-body p + p{margin-top:14px;}
+
+  .stat-row{
+    display:flex;
+    gap:36px;
+    margin-top:32px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    border-left:2px solid var(--gold);
+    padding-left:14px;
+  }
+  .stat .num{
+    font-family:var(--serif);
+    font-size:28px;
+    color:var(--ink);
+  }
+  .stat .label{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  /* ---------- Services ---------- */
+  .service-list{
+    border-top:1px solid var(--line);
+  }
+  .service-row{
+    padding:32px 0;
+    border-bottom:1px solid var(--line);
+    display:grgithubid;
+    grid-template-columns:44px 1fr;
+    gap:6px 20px;
+  }
+  .service-row .idx{
+    font-family:var(--serif);
+    font-size:14px;
+    color:var(--gold);
+    padding-top:4px;
+  }
+  .service-row .name{
+    font-family:var(--serif);
+    font-size:21px;
+    grid-column:2;
+  }
+  .service-row .desc{
+    font-size:15px;
+    color:var(--ink-soft);
+    max-width:52ch;
+    grid-column:2;
+    margin-top:6px;
+  }
+  .service-row .includes{
+    grid-column:2;
+    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 10px;
+  }
+  .service-row .includes span{
+    font-size:12.5px;
+    color:var(--sage-deep);
+    border:1px solid var(--sage);
+    border-radius:20px;
+    padding:4px 12px;
+  }
+  @media(max-width:640px){
+    .service-row{grid-template-columns:1fr;}
+    .service-row .idx{grid-column:1;}
+    .service-row .name, .service-row .desc, .service-row .includes{grid-column:1;}
+  }
+
+  /* ---------- Work ---------- */
+  .work-item{
+    padding:36px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .work-item:first-of-type{padding-top:0;}
+  .work-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:10px;
+  }
+  .work-name{
+    font-family:var(--serif);
+    font-size:24px;
+    color:var(--ink);
+  }
+  .work-tag{
+    font-size:12.5px;
+    color:var(--sage);
+    font-weight:600;
+    border:1px solid var(--sage);
+    border-radius:20px;
+    padding:4px 12px;
+    white-space:nowrap;
+  }
+  .work-desc{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    max-width:58ch;
+    margin-bottom:12px;
+  }
+  .work-link{
+    font-size:14px;
+    font-weight:600;
+    color:var(--sage-deep);
+    border-bottom:1px solid var(--sage);
+  }
+  .work-empty{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+    padding-top:8px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-section{
+    text-align:center;
+    border-bottom:none;
+  }
+  .contact-section .sec-heading{
+    margin-left:auto;
+    margin-right:auto;
+    max-width:20ch;
+  }
+  .contact-lead{
+    color:var(--ink-soft);
+    font-size:17px;
+    max-width:44ch;
+    margin:0 auto 36px;
+  }
+  .wa-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background:var(--wa);
+    color:#06210f;
+    font-weight:700;
+    font-size:18px;
+    padding:18px 34px;
+    border-radius:3px;
+  }
+  .wa-cta svg{width:24px; height:24px;}
+  .contact-note{
+    margin-top:18px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .tiktok-follow{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--ink);
+    border:1px solid var(--ink);
+    border-radius:20px;
+    padding:10px 20px;
+  }
+  .tiktok-follow svg{width:16px; height:16px;}
+
+  footer{
+    padding:32px 0 50px;
+    text-align:center;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+  <nav class="top">
+    <div class="wrap">
+      <div class="brand">Developer Habib</div>
+      <div class="nav-links">
+        <a class="tiktok-link" href="https://tiktok.com/@codebyhabib" target="_blank" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0115.54 3h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+        </a>
+        <a class="nav-cta" href="https://wa.me/8801321548744" target="_blank">যোগাযোগ</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">ওয়েব ডেভেলপমেন্ট</div>
+      <h1>ওয়েবসাইট বানাই যা <em>দেখতে যেমন সুন্দর</em>, কাজেও তেমন নির্ভরযোগ্য</h1>
+      <p class="hero-sub">
+        আমি Habib — ব্যবসা ও ব্যক্তিগত ব্র্যান্ডের জন্য কাস্টম ওয়েবসাইট ডিজাইন ও ডেভেলপ করি, যা দ্রুত লোড হয় এবং সব ডিভাইসে নিখুঁতভাবে কাজ করে।
+      </p>
+      <div class="hero-actions">
+        <a class="btn-solid" href="https://wa.me/8801321548744" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 003.3 17.7L2 22l4.4-1.2A9 9 0 1017.6 6.3zM12 20a7.9 7.9 0 01-4-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.5.7-.6.8-.2.2-.4.1a6.6 6.6 0 01-3.3-2.9c-.2-.4.2-.4.5-1.3.1-.1 0-.3 0-.4L9.5 8c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a1.9 1.9 0 00-.6 1.4c0 .8.6 1.6.7 1.7a8.9 8.9 0 003.5 3.4c.5.2.9.3 1.2.4.5.2 1 .1 1.3-.1.4-.2.9-.9 1.1-1.2.1-.3.1-.5 0-.6z"/></svg>
+          প্রজেক্ট নিয়ে কথা বলুন
+        </a>
+        <a class="link-under" href="#work">কাজ দেখুন</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-label">পরিচিতি</div>
+      <div class="about-grid">
+        <p class="about-lead">প্রতিটা ওয়েবসাইট একটা ব্র্যান্ডের প্রথম পরিচয় — সেটা যেন প্রথম দেখাতেই আস্থা তৈরি করে, এটাই আমার লক্ষ্য।</p>
+        <div class="about-body">
+          <p>আমি HTML, CSS ও JavaScript দিয়ে ওয়েবসাইট তৈরি করি — সাধারণ ল্যান্ডিং পেজ থেকে শুরু করে সম্পূর্ণ পোর্টফলিও বা ব্যবসায়িক সাইট পর্যন্ত।</p>
+          <p>প্রতিটা প্রজেক্টে ক্লায়েন্টের ব্র্যান্ড, লক্ষ্য ও দর্শকের কথা মাথায় রেখে ডিজাইন সাজাই — টেমপ্লেট কপি করে না, বরং প্রয়োজন অনুযায়ী নতুন করে বানিয়ে।</p>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="num">100%</div>
+              <div class="label">কাস্টম ডিজাইন</div>
+            </div>
+            <div class="stat">
+              <div class="num">দ্রুত</div>
+              <div class="label">লোডিং স্পিড</div>
+            </div>
+            <div class="stat">
+              <div class="num">সব ডিভাইস</div>
+              <div class="label">রেসপনসিভ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-label">সার্ভিস</div>
+      <div class="sec-heading">যা যা করা হয়</div>
+      <div class="service-list">
+        <div class="service-row">
+          <span class="idx">০১</span>
+          <span class="name">পোর্টফলিও ওয়েবসাইট</span>
+          <span class="desc">নিজের কাজ, দক্ষতা ও অভিজ্ঞতা এমনভাবে সাজানো হয় যাতে দেখলেই একজন ক্লায়েন্ট বা নিয়োগকর্তা আপনার উপর আস্থা রাখে।</span>
+          <span class="includes"><span>কাস্টম ডিজাইন</span><span>প্রজেক্ট শোকেস</span><span>মোবাইল ফ্রেন্ডলি</span></span>
+        </div>
+        <div class="service-row">
+          <span class="idx">০২</span>
+          <span class="name">ল্যান্ডিং পেজ</span>
+          <span class="desc">একটা নির্দিষ্ট প্রোডাক্ট, সার্ভিস বা অফার প্রচারের জন্য এক-পেজ ওয়েবসাইট — যার লক্ষ্য থাকে দর্শককে একটা নির্দিষ্ট অ্যাকশনে নিয়ে যাওয়া।</span>
+          <span class="includes"><span>দ্রুত লোডিং</span><span>স্পষ্ট CTA</span><span>ফর্ম ইন্টিগ্রেশন</span></span>
+        </div>
+        <div class="service-row">
+          <span class="idx">০৩</span>
+          <span class="name">বিজনেস ওয়েবসাইট</span>
+          <span class="desc">দোকান, প্রতিষ্ঠান বা ছোট উদ্যোগের জন্য সম্পূর্ণ অনলাইন উপস্থিতি — সার্ভিস, প্রাইসিং, যোগাযোগ, সবকিছু এক জায়গায়।</span>
+          <span class="includes"><span>মাল্টি-পেজ</span><span>SEO-বান্ধব</span><span>যোগাযোগ ফর্ম</span></span>
+        </div>
+        <div class="service-row">
+          <span class="idx">০৪</span>
+          <span class="name">ওয়েবসাইট রিডিজাইন</span>
+          <span class="desc">পুরনো বা আউটডেটেড সাইটকে নতুন করে সাজিয়ে তোলা হয় — দেখতে আধুনিক, ব্যবহার সহজ এবং লোডিং স্পিড আগের চেয়ে দ্রুত।</span>
+          <span class="includes"><span>মডার্ন লুক</span><span>স্পিড অপটিমাইজেশন</span><span>ইউজার-ফ্রেন্ডলি</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-label">কাজ</div>
+      <div class="sec-heading">সাম্প্রতিক প্রজেক্ট</div>
+
+      <div class="work-item">
+        <div class="work-top">
+          <div class="work-name">এই পোর্টফলিও ওয়েবসাইট</div>
+          <span class="work-tag">ডিজাইন + ডেভেলপমেন্ট</span>
+        </div>
+        <p class="work-desc">সম্পূর্ণ কাস্টম কোড করা এক-পেজ পোর্টফলিও, যা এই সাইটটাই।</p>
+        <a class="work-link" href="#">→ বিস্তারিত</a>
+      </div>
+
+      <div class="work-empty">+ নতুন প্রজেক্ট শেষ হলে এখানে যোগ করুন — এই কার্ডটা কপি করে নাম, বর্ণনা ও ট্যাগ বদলে দিন।</div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="sec-label">যোগাযোগ</div>
+      <div class="sec-heading">প্রজেক্ট নিয়ে কথা বলা যাক</div>
+      <p class="contact-lead">আপনার ওয়েবসাইট আইডিয়া নিয়ে আলোচনা করতে WhatsApp-এ মেসেজ দিন — সাধারণত দ্রুতই রিপ্লাই পাবেন।</p>
+      <a class="wa-cta" href="https://wa.me/8801321548744" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 003.3 17.7L2 22l4.4-1.2A9 9 0 1017.6 6.3zM12 20a7.9 7.9 0 01-4-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.5.7-.6.8-.2.2-.4.1a6.6 6.6 0 01-3.3-2.9c-.2-.4.2-.4.5-1.3.1-.1 0-.3 0-.4L9.5 8c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a1.9 1.9 0 00-.6 1.4c0 .8.6 1.6.7 1.7a8.9 8.9 0 003.5 3.4c.5.2.9.3 1.2.4.5.2 1 .1 1.3-.1.4-.2.9-.9 1.1-1.2.1-.3.1-.5 0-.6z"/></svg>
+        01321548744
+      </a>
+      <div class="contact-note">চাপ দিলে সরাসরি WhatsApp চ্যাট খুলে যাবে</div>
+      <a class="tiktok-follow" href="https://tiktok.com/@codebyhabib" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0115.54 3h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+        @codebyhabib — TikTok-এ ফলো করুন
+      </a>
+    </div>
+  </section>
+
+  <footer>© 2026 Developer Habib — সব স্বত্ব সংরক্ষিত</footer>
+
+</body>
+</html>
